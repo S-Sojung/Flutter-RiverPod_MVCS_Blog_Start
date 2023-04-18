@@ -9,6 +9,7 @@ import 'package:logger/logger.dart';
 import 'user.dart';
 
 class UserRepository {
+  //provider를 통해서 싱글톤으로 관리하지 말고 그냥 싱글톤으로 관리/
   static final UserRepository _instance = UserRepository._single();
   factory UserRepository() {
     return _instance;

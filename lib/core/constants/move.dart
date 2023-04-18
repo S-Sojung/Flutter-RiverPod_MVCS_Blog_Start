@@ -6,6 +6,9 @@ import 'package:flutter_riverpod_blog_start/view/pages/post/write_page/post_writ
 import 'package:flutter_riverpod_blog_start/view/pages/user/detail_page/user_detail_page.dart';
 
 class Move {
+
+  Move._single();
+
   static String postHomePage = "/post/home";
   static String postWritePage = "/post/write";
   static String joinPage = "/join";
@@ -16,6 +19,7 @@ class Move {
 
 Map<String, Widget Function(BuildContext)> getRouters() {
   return {
+    //post detail은 동적인 페이지기 때문에 매개변수를 받아야함.
     Move.joinPage: (context) => JoinPage(),
     Move.loginPage: (context) => LoginPage(),
     Move.postHomePage: (context) => PostHomePage(),

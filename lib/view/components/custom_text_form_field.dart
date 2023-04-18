@@ -18,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         validator: funValidator,
+
         obscureText: hint == "Password" ? true : false,
         decoration: InputDecoration(
           hintText: "Enter $hint",

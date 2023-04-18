@@ -6,6 +6,8 @@ import 'package:flutter_riverpod_blog_start/provider/session_provider.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
+
+//스플래쉬 스크린 라이브러리를 사용해서 gif를 통한 이미지가 뜨는 동안, 데이터를 다운 받기
 void main() async {
   //MyApp 시작 전에 필요한 것 여기서 다 로딩
   //무조건 동기적 실행.
