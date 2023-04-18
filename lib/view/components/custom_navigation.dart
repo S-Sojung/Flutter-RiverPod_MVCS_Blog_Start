@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_blog_start/controller/user_controller.dart';
 import 'package:flutter_riverpod_blog_start/core/constants/size.dart';
+import 'package:flutter_riverpod_blog_start/provider/session_provider.dart';
 
 class CustomNavigation extends ConsumerWidget {
   final scaffoldKey;
@@ -21,6 +23,7 @@ class CustomNavigation extends ConsumerWidget {
               TextButton(
                 onPressed: () {
                   scaffoldKey.currentState!.openEndDrawer();
+                  //누르면 닫힘
                 },
                 child: const Text(
                   "글쓰기",
@@ -35,6 +38,7 @@ class CustomNavigation extends ConsumerWidget {
               TextButton(
                 onPressed: () {
                   scaffoldKey.currentState!.openEndDrawer();
+                  //누르면 닫힘
                 },
                 child: const Text(
                   "회원정보보기",
@@ -48,6 +52,11 @@ class CustomNavigation extends ConsumerWidget {
               const Divider(),
               TextButton(
                 onPressed: () {
+                  scaffoldKey.currentState!.openEndDrawer();
+                  // ref.read(sessionProvider).logoutSuccess();
+                  ref.read(userControllerProvider).logout();
+                  //비지니스 로직이 없으면 그냥 여기서 바로 할 순 있다.
+                  //하지만, 로그아웃 후, 화면 이동이 필요하니까 컨트롤러 필요!
                 },
                 child: const Text(
                   "로그아웃",

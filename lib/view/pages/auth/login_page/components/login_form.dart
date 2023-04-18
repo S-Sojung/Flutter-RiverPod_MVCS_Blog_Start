@@ -1,17 +1,20 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod_blog_start/controller/user_controller.dart';
+import 'package:flutter_riverpod_blog_start/core/constants/move.dart';
 import 'package:flutter_riverpod_blog_start/core/utils/validator_util.dart';
 import 'package:flutter_riverpod_blog_start/view/components/custom_elevated_button.dart';
 import 'package:flutter_riverpod_blog_start/view/components/custom_text_form_field.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
   final _username = TextEditingController();
   final _password = TextEditingController();
   LoginForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return Form(
       key: _formKey,
       child: Column(
@@ -30,19 +33,20 @@ class LoginForm extends StatelessWidget {
             text: "로그인",
             funPageRoute: () async {
               if (_formKey.currentState!.validate()) {
-
+                //아래 read를 통해서 뭔가를 해야한다면 await 해서 기다려 줘야한다.
+                ref.read(userControllerProvider).login(_username.text.trim(), _password.text.trim());
               }
             },
           ),
           TextButton(
             onPressed: () {
-
+              Navigator.pushNamed(context, Move.joinPage);
             },
             child: const Text("아직 회원가입이 안되어 있나요?"),
           ),
           TextButton(
             onPressed: () {
-
+              Navigator.pushNamed(context, Move.postHomePage);
             },
             child: const Text("홈페이지 로그인 없이 가보는 테스트"),
           ),
